@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A95B64B025B44C3300AD0044 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95B64AF25B44C3300AD0044 /* BannerViewController.swift */; };
 		A99695F725B4410D00E84C00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99695F625B4410D00E84C00 /* AppDelegate.swift */; };
 		A99695F925B4410D00E84C00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99695F825B4410D00E84C00 /* ViewController.swift */; };
 		A99695FC25B4410D00E84C00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A99695FA25B4410D00E84C00 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A95B64AF25B44C3300AD0044 /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
 		A99695F325B4410D00E84C00 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A99695F625B4410D00E84C00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A99695F825B4410D00E84C00 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				A99695FD25B4411100E84C00 /* Assets.xcassets */,
 				A99695FF25B4411100E84C00 /* LaunchScreen.storyboard */,
 				A996960225B4411100E84C00 /* Info.plist */,
+				A95B64AF25B44C3300AD0044 /* BannerViewController.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95B64B025B44C3300AD0044 /* BannerViewController.swift in Sources */,
 				A99695F925B4410D00E84C00 /* ViewController.swift in Sources */,
 				A99695F725B4410D00E84C00 /* AppDelegate.swift in Sources */,
 			);
@@ -432,7 +436,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -440,6 +445,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kr.company.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -449,7 +455,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,6 +464,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kr.company.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
