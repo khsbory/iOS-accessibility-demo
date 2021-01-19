@@ -32,12 +32,11 @@ class BannerViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+
+
+
+
         
-        if UIAccessibility.isVoiceOverRunning {
-            self.mode = .running
-        }else {
-           self.mode = .none
-        }
         
        
         
@@ -52,7 +51,7 @@ class BannerViewController: UIViewController {
         
         if timer != nil {
             timer?.invalidate()
-            timer = nil 
+            timer = nil
         }
     }
     
@@ -78,9 +77,14 @@ class BannerViewController: UIViewController {
         
         self.scrollView.contentOffset = CGPoint(x: x, y: 0)
         
-        UIAccessibility.post(notification: .screenChanged, argument: scrollView)
+
+        //UIAccessibility.post(notification: .screenChanged, argument: scrollView)
+        sleep(1)
         
-        UIAccessibility.post(notification: .announcement, argument: banners[self.count])
+        UIAccessibility.post(notification: .announcement, argument: self.banners[self.count])
+        
+        sleep(1)
+
     }
     @IBAction func prev(_ sender: UIButton) {
         self.count = self.count - 1
@@ -92,15 +96,25 @@ class BannerViewController: UIViewController {
         let x = UIScreen.main.bounds.width * CGFloat(self.count)
         
         self.scrollView.contentOffset = CGPoint(x: x, y: 0)
-        UIAccessibility.post(notification: .screenChanged, argument: scrollView)
-        
+        //UIAccessibility.post(notification: .screenChanged, argument: scrollView)
+        sleep(1)
         UIAccessibility.post(notification: .announcement, argument: banners[self.count])
+        sleep(1)
     }
     
     func setup() {
         
-        
+
         print(self.mode)
+        
+        if self.mode == .running {
+        
+            if UIAccessibility.isVoiceOverRunning {
+                self.mode = .running
+            }else {
+               self.mode = .none
+            }
+        }
         
         btNext.accessibilityLabel = "다음배너"
         btPrev.accessibilityLabel = "이전배너"
@@ -156,7 +170,7 @@ class BannerViewController: UIViewController {
             
             btPrev.isHidden = true
             btNext.isHidden = true
-            tvComment.isHidden = false 
+            tvComment.isHidden = false
             
              self.title = "롤링배너"
         case .running:

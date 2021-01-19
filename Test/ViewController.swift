@@ -11,7 +11,7 @@ import UIKit
 
 
 enum VoiceOverMode {
-    case none 
+    case none
     case running
 }
 
@@ -32,20 +32,20 @@ class ViewController: UIViewController {
             let vc = segue.destination as! BannerViewController
             vc.mode = self.mode
         default:
-            () 
+            ()
         }
     }
 
     @IBAction func actionApply(_ sender: UIButton) {
         
-        self.mode = .none
+        self.mode = .running
         
         self.performSegue(withIdentifier: "VoiceOver", sender: nil)
     }
     
     @IBAction func actionNormal(_ sender: UIButton) {
         
-        self.mode = .running
+        self.mode = .none
         
          self.performSegue(withIdentifier: "VoiceOver", sender: nil)
     }
