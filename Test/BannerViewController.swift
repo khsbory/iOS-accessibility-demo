@@ -13,7 +13,7 @@ class BannerViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var btPrev: UIButton!
     @IBOutlet weak var btNext: UIButton!
-    @IBOutlet weak var tvComment: UITextView!
+
     
     var count : Int = 0
     
@@ -29,19 +29,6 @@ class BannerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-
-
-
-
-        
-        
-       
-        
-        
-        
         setup()
     }
     
@@ -78,9 +65,9 @@ class BannerViewController: UIViewController {
         self.scrollView.contentOffset = CGPoint(x: x, y: 0)
         
 
-        //UIAccessibility.post(notification: .screenChanged, argument: scrollView)
+       
         sleep(1)
-        
+        UIAccessibility.post(notification: .screenChanged, argument: scrollView)
         UIAccessibility.post(notification: .announcement, argument: self.banners[self.count])
         
         sleep(1)
@@ -96,8 +83,9 @@ class BannerViewController: UIViewController {
         let x = UIScreen.main.bounds.width * CGFloat(self.count)
         
         self.scrollView.contentOffset = CGPoint(x: x, y: 0)
-        //UIAccessibility.post(notification: .screenChanged, argument: scrollView)
+        
         sleep(1)
+        UIAccessibility.post(notification: .screenChanged, argument: scrollView)
         UIAccessibility.post(notification: .announcement, argument: banners[self.count])
         sleep(1)
     }
@@ -124,27 +112,29 @@ class BannerViewController: UIViewController {
         
         var x:CGFloat = 0
         let y:CGFloat = 0
-        for banner in banners {
+        for (i,banner) in banners.enumerated() {
             
-            let view = UIView(frame: CGRect(x: x, y: y, width: UIScreen.main.bounds.width, height: 252))
-            
-            
-            view.backgroundColor = .red
-            
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 252))
+            let width = self.scrollView.frame.width
+            let button = MyButton(frame: CGRect(x: x, y: y, width: width, height: 252))
             button.setTitle(banner, for: .normal)
+            button.tag = i 
 //            view.addSubview(label)
             
             button.accessibilityLabel = banner
+            button.backgroundColor = .red
+            
+            button.addTarget(self, action: #selector(clicked(_:)), for: .touchUpInside)
             view.addSubview(button)
             
             
-            scrollView.addSubview(view)
+            scrollView.addSubview(button)
             
-            x = x + UIScreen.main.bounds.width
+            x = x + width
             
         }
         
+        
+
 
         
         scrollView.contentSize = CGSize(width: x, height: frame.size.height)
@@ -170,24 +160,59 @@ class BannerViewController: UIViewController {
             
             btPrev.isHidden = true
             btNext.isHidden = true
-            tvComment.isHidden = false
             
-             self.title = "롤링배너"
+            self.title = "롤링배너"
         case .running:
-            
-            
-
              self.title = "접근성이 적용된 예시"
-             
-             tvComment.isHidden = true
-            
             //타이머 실행 안함
             btPrev.isHidden = false
             btNext.isHidden = false
             
             
-            
+            scrollView.isAccessibilityElement = true
+            scrollView.accessibilityTraits = .adjustable
+        }
+    }
+    
+    override func accessibilityIncrement() {
+        scrollView.accessibilityValue = self.banners[self.count]
+    }
+
+    override func accessibilityDecrement() {
+        scrollView.accessibilityValue = self.banners[self.count]
+    }
+    
+    @objc func clicked(_ sender:UIButton) {
+        
+        let tag = sender.tag
+        
+        let title = banners[tag]
+        let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+              switch action.style{
+              case .default:
+                    ()
+              case .cancel:
+                    ()
+              case .destructive:
+                    ()
+        }}))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+}
+
+
+
+class MyButton : UIButton {
+    override var accessibilityTraits: UIAccessibilityTraits {
+        get {
+            return .adjustable
+        }
+        set {
+            super.accessibilityTraits = newValue
         }
     }
 
+    
 }

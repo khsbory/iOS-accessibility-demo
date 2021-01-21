@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73B7806325B9FC240030DB5D /* RollingBannerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7806225B9FC240030DB5D /* RollingBannerMenuViewController.swift */; };
 		A95B64B025B44C3300AD0044 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95B64AF25B44C3300AD0044 /* BannerViewController.swift */; };
 		A99695F725B4410D00E84C00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99695F625B4410D00E84C00 /* AppDelegate.swift */; };
 		A99695F925B4410D00E84C00 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99695F825B4410D00E84C00 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		73B7806225B9FC240030DB5D /* RollingBannerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingBannerMenuViewController.swift; sourceTree = "<group>"; };
 		A95B64AF25B44C3300AD0044 /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
 		A99695F325B4410D00E84C00 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A99695F625B4410D00E84C00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				A99695F625B4410D00E84C00 /* AppDelegate.swift */,
 				A99695F825B4410D00E84C00 /* ViewController.swift */,
+				73B7806225B9FC240030DB5D /* RollingBannerMenuViewController.swift */,
 				A99695FA25B4410D00E84C00 /* Main.storyboard */,
 				A99695FD25B4411100E84C00 /* Assets.xcassets */,
 				A99695FF25B4411100E84C00 /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A95B64B025B44C3300AD0044 /* BannerViewController.swift in Sources */,
+				73B7806325B9FC240030DB5D /* RollingBannerMenuViewController.swift in Sources */,
 				A99695F925B4410D00E84C00 /* ViewController.swift in Sources */,
 				A99695F725B4410D00E84C00 /* AppDelegate.swift in Sources */,
 			);
