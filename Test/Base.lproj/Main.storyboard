@@ -110,7 +110,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eoT-V1-P4s">
                                 <rect key="frame" x="0.0" y="124" width="375" height="292"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pof-ON-ZSE">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pof-ON-ZSE" customClass="MYScrollView" customModule="Test" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="252"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="252" id="rtb-4p-aTG"/>

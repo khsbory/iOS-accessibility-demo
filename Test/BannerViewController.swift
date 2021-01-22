@@ -10,7 +10,7 @@ import UIKit
 
 class BannerViewController: UIViewController {
     var mode  :VoiceOverMode = .none
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: MYScrollView!
     @IBOutlet weak var btPrev: UIButton!
     @IBOutlet weak var btNext: UIButton!
 
@@ -67,10 +67,11 @@ class BannerViewController: UIViewController {
 
        
         sleep(1)
-        UIAccessibility.post(notification: .screenChanged, argument: scrollView)
+        //UIAccessibility.post(notification: .screenChanged, argument: scrollView)
+        //annoucement 제외 요구
         UIAccessibility.post(notification: .announcement, argument: self.banners[self.count])
         
-        sleep(1)
+        //sleep(1)
 
     }
     @IBAction func prev(_ sender: UIButton) {
@@ -85,9 +86,10 @@ class BannerViewController: UIViewController {
         self.scrollView.contentOffset = CGPoint(x: x, y: 0)
         
         sleep(1)
-        UIAccessibility.post(notification: .screenChanged, argument: scrollView)
+        //UIAccessibility.post(notification: .screenChanged, argument: scrollView)
+        //annoucement 제외 요구
         UIAccessibility.post(notification: .announcement, argument: banners[self.count])
-        sleep(1)
+        //sleep(1)
     }
     
     func setup() {
@@ -168,19 +170,13 @@ class BannerViewController: UIViewController {
             btPrev.isHidden = false
             btNext.isHidden = false
             
-            
+            scrollView.myDelegate = self
             scrollView.isAccessibilityElement = true
             scrollView.accessibilityTraits = .adjustable
         }
     }
     
-    override func accessibilityIncrement() {
-        scrollView.accessibilityValue = self.banners[self.count]
-    }
 
-    override func accessibilityDecrement() {
-        scrollView.accessibilityValue = self.banners[self.count]
-    }
     
     @objc func clicked(_ sender:UIButton) {
         
@@ -202,6 +198,15 @@ class BannerViewController: UIViewController {
 
 }
 
+extension BannerViewController : MyScrollViewDelegate{
+    func scrollPrev() {
+        self.prev(self.btPrev)
+    }
+    func scrollNext() {
+        self.next(self.btNext)
+    }
+}
+
 
 
 class MyButton : UIButton {
@@ -213,6 +218,30 @@ class MyButton : UIButton {
             super.accessibilityTraits = newValue
         }
     }
+}
 
+protocol MyScrollViewDelegate {
+    func scrollNext()
+    func scrollPrev()
+}
+
+class MYScrollView : UIScrollView {
     
+    var myDelegate: MyScrollViewDelegate?
+    
+    override func accessibilityIncrement() {
+       // scrollView.accessibilityValue = self.banners[self.count]
+        
+        //print("increment")
+        
+        myDelegate?.scrollNext()
+    }
+    
+
+    override func accessibilityDecrement() {
+        //scrollView.accessibilityValue = self.banners[self.count]
+        //print("decrement")
+        
+        myDelegate?.scrollPrev()
+    }
 }
