@@ -122,7 +122,8 @@ class BannerViewController: UIViewController {
             button.tag = i 
 //            view.addSubview(label)
             
-            button.accessibilityLabel = banner
+            button.accessibilityLabel = "배너"
+            button.accessibilityValue = banner
             button.backgroundColor = .red
             
             button.addTarget(self, action: #selector(clicked(_:)), for: .touchUpInside)
